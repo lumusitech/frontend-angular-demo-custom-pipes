@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pipes</title>
+  </head>
+  <body>
+    <h1>Pipes</h1>
+    <h2>Custom Pipes</h2>
+    <h3>custom reverso Pipe</h3>
+    <p>{{ cadena | reverso }}</p>
+    <hr />
+    <h3>custom capitalize Pipe</h3>
+    <p>{{ cadena | capitalize }}</p>
+    <hr />
+    <h3>custom numToArray Pipe</h3>
+    <p>{{ 5 | numToArray }}</p>
+    <li *ngFor="let n of 10 | numToArray">{{ n }}</li>
+    <hr />
+    <br />
+
+    <h2>Pipes de Angular</h2>
+    <h3>Currency Pipe</h3>
+    <p>Precio: {{ precio | currency: "ARS":"symbol":"1.1-2" }}</p>
+    <hr />
+    <h3>Decimal Pipe</h3>
+    <p>Decimal: {{ decimal | number: "1.1-1" }}</p>
+    <hr />
+    <h3>Date Pipe</h3>
+    <p>Date: {{ date | date: "dd-MM-yyyy HH:mm:ss " }}</p>
+    <p>Date: {{ date | date: "dd-LLLL-yyyy" }}</p>
+    <!-- Averiguar más formatos en la Doc -->
+    <hr />
+    <h3>Percent Pipe</h3>
+    <p>Percent: {{ random | percent: "1.1-2" }}</p>
+    <hr />
+    <h3>Json Pipe</h3>
+    <p>Percent: {{ user | json }}</p>
+    <hr />
+    <h3>Upper - Lower - Title Pipe</h3>
+    <p>Upper: {{ cadena | uppercase }}</p>
+    <p>Lower: {{ cadena | lowercase }}</p>
+    <p>Title: {{ cadena | titlecase }}</p>
+    <hr />
+    <h3>Slice Pipe</h3>
+    <ul>
+      {{
+        min
+      }}
+      <input
+        type="range"
+        min="0"
+        [max]="lista.length - 1"
+        step="1"
+        [(ngModel)]="min"
+      />
+      {{
+        max
+      }}
+      <input
+        type="range"
+        min="0"
+        [max]="lista.length - 1"
+        step="1"
+        [(ngModel)]="max"
+      />
+      <li *ngFor="let lugar of lista | slice: min:max">
+        {{ lugar | slice: 0:3 }}...
+        <!-- Muy bueno para cortar frases o nombres muy largos -->
+      </li>
+    </ul>
+    <hr />
+    <h3>Async Pipe</h3>
+    <p>{{ prom | async }}</p>
+    <ul>
+      <li *ngFor="let p of promPosts | async">{{ p.title }}</li>
+    </ul>
+  </body>
+</html>
